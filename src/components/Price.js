@@ -8,13 +8,13 @@ const Price = ({data, trend, difference}) => (
     </div>
     <div className="col-sm-12">
       {difference ?
-        <h4>{trend === 'up'
+        <h3>{trend === 'up'
               ? <span className="glyphicon glyphicon-circle-arrow-up text-success" aria-hidden="true"></span>
-              : trend === 'down' ? <span className="glyphicon glyphicon-circle-down-up text-danger" aria-hidden="true"></span>
+              : trend === 'down' ? <span className="glyphicon glyphicon-circle-arrow-down text-danger" aria-hidden="true"></span>
               : null
             }
-          &nbsp;{difference}%
-        </h4>
+          &nbsp;{difference} %
+        </h3>
       : null}
     </div>
   </section>
