@@ -1,7 +1,8 @@
 import {
   REQUEST_DATA,
   RECEIVE_DATA
-} from '../actions'
+} from './actions'
+import { getDifferenceInPercentage } from './utils'
 
 const posts = (state = {
   isFetching: false,
@@ -19,11 +20,9 @@ const posts = (state = {
         isFetching: true
       }
     case RECEIVE_DATA:
-      const newPrice = parseFloat(action.data.last_price)
+      const newPrice = action.data.last_price
       const trend = state.lastPrice && state.lastPrice !== newPrice ? state.lastPrice < newPrice  ? 'up' : 'down' : null // meh
-      const difference = trend === 'up'
-              ? (newPrice - state.lastPrice) / state.lastPrice * 100
-              : trend === 'down' ? (state.lastPrice - newPrice) / state.lastPrice * 100 : null
+      const difference = state.lastPrice ? getDifferenceInPercentage(newPrice, state.lastPrice) : null
 
       return {
         ...state,

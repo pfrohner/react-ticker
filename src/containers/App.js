@@ -42,12 +42,13 @@ class App extends Component {
 
     return (
       <main className="container">
-        <h3>BTC/GBP <span className="label label-danger" onClick={this.handleRefreshClick}>Live</span></h3>
-        <p>Page reloads every 30 seconds. Impatient? Click the live label!</p>
         {isEmpty
           ? (isFetching ? <h2 className="text-center">Loading...</h2> : <h2 className="text-center">Empty.</h2>)
           : <section style={{ opacity: isFetching ? 0.5 : 1 }} className="row">
               <section className="col-sm-12 col-md-4">
+                <a className="label label-danger" onClick={this.handleRefreshClick}>Live</a>
+                <h3>BTC/GBP</h3>
+                <p>Page reloads every 30 seconds. Impatient? Click the live label!</p>
                 <Price data={data} trend={trend} difference={difference} />
               </section>
               <section className="col-sm-12 col-md-8">
