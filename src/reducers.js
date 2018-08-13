@@ -21,7 +21,7 @@ const posts = (state = {
     case RECEIVE_DATA:
       const newPrice = action.data.last_price
       const trend = state.lastPrice && state.lastPrice !== newPrice ? state.lastPrice < newPrice  ? 'up' : 'down' : null // meh
-      const difference = state.lastPrice ? getDifferenceInPercentage(newPrice, state.lastPrice) : null
+      const difference = state.lastPrice ? getDifferenceInPercentage(state.lastPrice, newPrice) : null
 
       return {
         ...state,
