@@ -12,4 +12,10 @@ describe('gets the percentage difference of 2 numbers', () => {
 
     expect(diff).toEqual(-50);
   })
+
+  it('works with floats, only displays 2 decimals ', () => {
+    const diff = getDifferenceInPercentage(4344.23, 2222.46)
+
+    expect(diff).toEqual(-48.84);
+  })
 })
