@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { fetchData } from '../actions'
 import { Line } from 'react-chartjs'
+import { fetchData } from '../actions'
 import Price from '../components/Price'
 
 const refreshInterval = 30000
@@ -12,9 +12,8 @@ class App extends Component {
     isFetching: PropTypes.bool.isRequired,
     values: PropTypes.array.isRequired,
     labels: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    trend: PropTypes.string,
-    difference: PropTypes.number
+    priceData: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
   }
 
   componentDidMount() {
