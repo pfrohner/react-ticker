@@ -1,6 +1,7 @@
 import {
   REQUEST_DATA,
-  RECEIVE_DATA
+  RECEIVE_DATA,
+  REQUEST_COMPLETED
 } from './actions'
 import { getDifferenceInPercentage } from './utils'
 
@@ -26,13 +27,17 @@ const posts = (state = {
 
       return {
         ...state,
-        isFetching: false,
         data: action.data,
         values: [...state.values, newPrice].slice(-10),
         labels: [...state.labels, action.receivedAt].slice(-10),
         lastPrice: newPrice,
         trend: trend,
         difference: difference
+      }
+    case REQUEST_COMPLETED:
+      return {
+        ...state,
+        isFetching: false
       }
     default:
       return state
