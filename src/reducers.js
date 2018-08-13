@@ -8,11 +8,9 @@ import { getDifferenceInPercentage } from './utils'
 const posts = (state = {
   isFetching: false,
   lastPrice: null,
-  data: {},
+  priceData: {},
   labels: [],
-  values: [],
-  trend: null,
-  difference: null
+  values: []
 }, action) => {
   switch (action.type) {
     case REQUEST_DATA:
@@ -27,12 +25,14 @@ const posts = (state = {
 
       return {
         ...state,
-        data: action.data,
         values: [...state.values, newPrice].slice(-10),
         labels: [...state.labels, action.receivedAt].slice(-10),
-        lastPrice: newPrice,
-        trend: trend,
-        difference: difference
+        priceData: {
+          price: newPrice,
+          trend: trend,
+          difference: difference
+        },
+        lastPrice: newPrice
       }
     case REQUEST_COMPLETED:
       return {

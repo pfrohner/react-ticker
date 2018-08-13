@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   render() {
-    const { isFetching, data, labels, values, trend, difference } = this.props
+    const { isFetching, priceData, labels, values } = this.props
     const isEmpty = labels.length === 0 || values.length === 0
 
     return (
@@ -50,7 +50,7 @@ class App extends Component {
                 <a className="label label-danger" onClick={this.handleRefreshClick}>Live</a>
                 <h3>BTC/GBP</h3>
                 <p>Page reloads every 30 seconds. Impatient? Click the live label!</p>
-                <Price data={data} trend={trend} difference={difference} />
+                <Price data={priceData} />
               </section>
               <section className="col-sm-12 col-md-8">
                 <Line
@@ -77,22 +77,18 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { isFetching, data, labels, values, trend, difference } = state || {
+  const { isFetching, priceData, labels, values } = state || {
     isFetching: true,
-    data: {},
+    priceData: {},
     labels: [],
-    values: [],
-    trend: null,
-    difference: null
+    values: []
   }
 
   return {
     isFetching,
-    data,
+    priceData,
     labels,
-    values,
-    trend,
-    difference
+    values
   }
 }
 
